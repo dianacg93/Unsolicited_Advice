@@ -14,6 +14,7 @@ const adviceInput = document.getElementById("searchbar");
 queryBtn.addEventListener("click", async () => {
     const advice = adviceInput.value;
     const message = document.createElement('p');
+    adviceInput.value = "";
     try{ 
         let queryRes = await axios.get(`${BASE_URL}/search/${advice}`);
         let adviceRes = queryRes.data;
@@ -46,7 +47,6 @@ const randomRes = async () => {
     await axios.get(
         `${BASE_URL}`
     ).then(res => {
-        console.log(res.data.slip)
         let adviceObj = res.data.slip;
         advice.textContent = adviceObj.advice;
         advice.id = adviceObj.id;
