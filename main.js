@@ -16,7 +16,7 @@ queryBtn.addEventListener("click", async () => {
     const message = document.createElement('p');
     adviceInput.value = "";
     try{ 
-        let queryRes = await axios.get(`${BASE_URL}/search/${advice}`);
+        let queryRes = await axios.get(`https://api.adviceslip.com/advice/search/${advice}`);
         let adviceRes = queryRes.data;
         if(adviceRes.query){
             while(queryAdv.lastChild){
@@ -45,7 +45,7 @@ queryBtn.addEventListener("click", async () => {
 
 const randomRes = async () => {
     await axios.get(
-        `${BASE_URL}`
+        `https://api.adviceslip.com/advice`
     ).then(res => {
         let adviceObj = res.data.slip;
         advice.textContent = adviceObj.advice;
